@@ -7,3 +7,17 @@ Lab_on_Silicon is an Apple Silicon first OWASP Top 10 security testing environme
 
 QUICK START
 
+TOOLCHAIN:
+
+This project uses:
+
+Homebrew 7.0.10
+Docker CLI 29.9.2
+Docker Compose 5.6.1
+Colima 0.10.3
+Lima 2.2.1
+Containers:
+
+kalilinux/kali-rolling
+bkimminich/juice-shop:v20.2.0
+The environment was verified on Apple Silicon using native ARM64 containers.
