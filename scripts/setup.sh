@@ -9,6 +9,6 @@ echo "Pulling Kali Linux..."
 docker pull kalilinux/kali-rolling
 
 echo "Pulling OWASP Juice Shop..."
-docker pull bkimminich/juice-shop:v20.2.0
+docker pull bkimminich/juice-shop:v20.3.0
 
 echo "Setup complete."

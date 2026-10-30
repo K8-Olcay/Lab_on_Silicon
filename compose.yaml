@@ -1,0 +1,22 @@
+services:
+  kali:
+    build: ./kali
+    image: lab-kali
+    container_name: lab-kali
+    networks:
+      - lab-net
+    stdin_open: true
+    tty: true
+    # No ports published for Kali
+
+  juice-shop:
+    image: bkimminich/juice-shop:v20.3.0
+    container_name: lab-juice-shop
+    networks:
+      - lab-net
+    ports:
+      - "127.0.0.1:3000:3000"
+
+networks:
+  lab-net:
+    driver: bridge

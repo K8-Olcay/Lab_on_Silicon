@@ -16,6 +16,15 @@ Docker CLI
 Docker Compose
     - Docker Compose version 5.6.1
 
+    Docker Compose CLI Plugin Setup:
+        mkdir -p ~/.docker/cli-plugins
+        ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" ~/.docker/cli-plugins/docker-compose
+
+    Verification:
+    docker compose version
+
+    Result: Docker Compose version 5.6.1
+
 
 Colima
     - Colima 0.10.3
@@ -45,10 +54,10 @@ RUN KALI:
             Figure 1. Kali Linux container running on Apple Silicon.
 
 PULL JUICE SHOP:
-                docker pull bkimminich/juice-shop:v20.2.0
+                docker pull bkimminich/juice-shop:v20.3.0
 
 RUN JUICE SHOP:
-                docker run -d --name juice-shop-test -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.2.0
+                docker run -d --name juice-shop-test -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.3.0
                 
                 screenshots/Juice Shop Welcome Page.png
 
@@ -76,7 +85,7 @@ docker inspect kalilinux/kali-rolling --format '{{.Architecture}}'
 Result: arm64
 
 Juice Shop:
-docker inspect bkimminich/juice-shop:v20.2.0 --format '{{.Architecture}}'
+docker inspect bkimminich/juice-shop:v20.3.0 --format '{{.Architecture}}'
 Result: arm64
 
 
