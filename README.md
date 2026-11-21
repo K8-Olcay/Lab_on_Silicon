@@ -68,3 +68,22 @@ make reset - Tear down and rebuild the lab.
 make status - Display the status of the lab containers.
 
 make shell - Open an interactive shell inside the Kali container.
+
+make verify - Verify ARM64-native operation and the lab isolation model.
+
+**Controlled network egress**
+
+By default, `lab-net` has **outbound internet access disabled**. This is intentional: the running Kali and Juice Shop containers do not need internet access, and closing egress keeps the lab provably contained.
+
+This does **not** affect `docker pull` or `docker build`. Those use the Docker daemon's own network, not `lab-net`.
+
+If you need to install additional packages inside the running Kali container:
+
+1. Edit `compose.yaml` and set the masquerade option to `"true"`.
+2. Run `make down && make up` to recreate the network.
+3. Install what you need from inside Kali.
+4. Set the masquerade option back to `"false"`.
+5. Run `make down && make up` again.
+6. Run `make verify` to confirm that the lab is isolated again.
+
+Never leave the lab running with egress enabled unless you are actively installing packages.

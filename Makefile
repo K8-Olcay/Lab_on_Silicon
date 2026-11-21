@@ -1,4 +1,4 @@
-.PHONY: up down reset status shell
+.PHONY: up down reset status shell verify
 
 up:
 	docker compose up -d --build
@@ -15,3 +15,7 @@ status:
 
 shell:
 	docker compose exec kali /bin/bash
+
+verify:
+	./scripts/verify-arch.sh
+	./scripts/verify-isolation.sh

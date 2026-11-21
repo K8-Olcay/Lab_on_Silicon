@@ -19,4 +19,9 @@ services:
 
 networks:
   lab-net:
+    name: lab-net
     driver: bridge
+    driver_opts:
+      # Egress is intentionally disabled now that the runtime toolset is frozen.
+      # See README "Controlled network egress" before re-enabling.
+      com.docker.network.bridge.enable_ip_masquerade: "false"
