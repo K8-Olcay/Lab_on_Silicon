@@ -10,15 +10,21 @@ MacBook Pro M5 (host)
         └── lab-net (private bridge network)
             ├── kali
             │   └── No ports published
-            └── juice-shop
-                └── 127.0.0.1:3000 only
+            ├── juice-shop
+            │   └── 127.0.0.1:3000 only
+            └── Internet egress
+                └── BLOCKED (IP masquerading disabled)
+
+Outbound internet access from `lab-net` is intentionally disabled by setting `com.docker.network.bridge.enable_ip_masquerade` to `"false"`. Kali and Juice Shop can still communicate with each other over the private bridge network, and Juice Shop remains accessible from the host through `127.0.0.1:3000`.
+
+The isolation configuration is verified automatically by `make verify`.
 
 
 **Kali Attack Image**
 
 The Kali attack container is built from kalilinux/kali-rolling using a custom Dockerfile located at kali/Dockerfile.
 
-The lab uses the targeted toolset approach (Option A) rather than the full kali-linux-headless metapackage. This keeps the attack image smaller while providing the tools needed for the security testing activities in the lab.
+The lab uses the targeted toolset approach rather than the full kali-linux-headless metapackage. This keeps the attack image smaller while providing the tools needed for the security testing activities in the lab.
 
 The following tools are installed:
 
